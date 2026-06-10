@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ur" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mustaqeem Aurangabadi — Shayar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #1a1208;
+      --warm-bg:    #faf7f2;
+      --parchment:  #f3ede3;
+      --gold:       #b8860b;
+      --gold-light: #d4a017;
+      --muted:      #7a6a52;
+      --border:     #e0d5c5;
+      --white:      #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--warm-bg);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,247,242,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 90vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, #f0e8d8 0%, transparent 70%),
+        var(--warm-bg);
+      position: relative;
+      overflow: hidden;
+    }
+    /* decorative script lines */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, #e8dfd0 39px, #e8dfd0 40px);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-divider {
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.8rem auto;
+    }
+    .hero-sher {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      line-height: 2.2;
+      color: var(--muted);
+      max-width: 600px;
+      direction: rtl;
+      font-style: italic;
+    }
+    .hero-sher-latin {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 2;
+      margin-top: 0.6rem;
+    }
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: background 0.25s, color 0.25s;
+      border-radius: 2px;
+    }
+    .hero-cta:hover { background: var(--gold); color: var(--white); }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 5rem 2rem; }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-rule {
+      width: 40px; height: 2px;
+      background: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--parchment); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-text p {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      line-height: 1.9;
+    }
+    .about-sher-box {
+      background: var(--white);
+      border-left: 3px solid var(--gold);
+      padding: 2rem 1.8rem;
+      border-radius: 2px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    }
+    .about-sher-box p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 2.1;
+      color: var(--ink);
+    }
+    .about-sher-box .sher-urdu {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      direction: rtl;
+      font-size: 1.15rem;
+      line-height: 2.5;
+      color: var(--ink);
+      font-style: normal;
+    }
+    .about-sher-box footer {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ── POEMS ── */
+    #poems { background: var(--warm-bg); }
+    .poems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .poem-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem 1.6rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .poem-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-light), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .poem-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .poem-card:hover::after { transform: scaleX(1); }
+    .poem-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+    .poem-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+    .poem-excerpt {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+    .poem-excerpt.urdu {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      direction: rtl;
+      font-style: normal;
+      font-size: 0.95rem;
+    }
+    .poem-lang {
+      margin-top: 1.2rem;
+      font-size: 0.7rem;
+      color: var(--border);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--ink); color: var(--white); }
+    #contact .section-title { color: var(--white); }
+    #contact .section-label { color: var(--gold-light); }
+    .social-grid {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .social-link {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem 1.2rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 2px;
+      text-decoration: none;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .social-link:hover {
+      border-color: var(--gold-light);
+      color: var(--gold-light);
+      background: rgba(212,160,23,0.07);
+    }
+    .social-link svg { width: 16px; height: 16px; fill: currentColor; }
+    .contact-note {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 1.5rem 2rem;
+      background: #110e06;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.75rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      section { padding: 3.5rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">M.<span>A</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#poems">Poems</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Shayar · Aurangabad</p>
+  <h1 class="hero-name">Mustaqeem<br><em>Aurangabadi</em></h1>
+  <div class="hero-divider"></div>
+  <p class="hero-sher">
+    خدا بھی ہے مجھ پر مہربان کہتے ہیں<br>
+    اس بندۂ ناچیز کو مستقیم خان کہتے ہیں
+  </p>
+  <p class="hero-sher-latin">
+    Khuda bhi hai mujh par meherban kehte hain<br>
+    Is banda-e-na-cheez ko Mustaqeem Khan kehte hain
+  </p>
+  <a href="#poems" class="hero-cta">Padhiye Shayari</a>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">Taaruf</p>
+        <h2 class="section-title">Kaun Hoon Main?</h2>
+        <div class="section-rule"></div>
+        <p>Aurangabad ki mitti se janam liya, lafzon mein zindagi dhoondta hoon. Urdu, Hindi aur English — teen zabaaon mein apne dil ki baat kehta hoon.</p>
+        <p>Ghalib ki riwayat ko aage badhane ki ek chhoti si koshish — jab kaalam dil se nikle, toh kaagaz pe bhi utar aata hai.</p>
+        <p>Mustaqeem Aurangabadi — ek shayar jo apni khudi mein khoye rehne ka hunar jaanta hai.</p>
+      </div>
+      <div class="about-sher-box">
+        <p class="sher-urdu">
+          خدا بھی ہے مجھ پر مہربان کہتے ہیں<br>
+          اس بندۂ ناچیز کو مستقیم خان کہتے ہیں
+        </p>
+        <p style="margin-top:1rem; font-family:'Playfair Display',serif; font-style:italic; font-size:0.95rem; color:var(--muted); line-height:2;">
+          Khuda bhi hai mujh par meherban kehte hain<br>
+          Is banda-e-na-cheez ko Mustaqeem Khan kehte hain
+        </p>
+        <footer>— Mustaqeem Aurangabadi</footer>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POEMS -->
+<section id="poems">
+  <div class="container">
+    <p class="section-label">Kaalam</p>
+    <h2 class="section-title">Shayari</h2>
+    <div class="section-rule"></div>
+    <div class="poems-grid">
+
+      <div class="poem-card">
+        <p class="poem-tag">Ghazal · Urdu</p>
+        <h3 class="poem-title">Dil ki Baat</h3>
+        <p class="poem-excerpt urdu">
+          یہاں ایک شعر لکھیں<br>
+          دوسری سطر یہاں
+        </p>
+        <p class="poem-lang">Urdu</p>
+      </div>
+
+      <div class="poem-card">
+        <p class="poem-tag">Nazm · Hindi</p>
+        <h3 class="poem-title">Waqt ka Safar</h3>
+        <p class="poem-excerpt">
+          Yahan apni nazm ki pehli do lines likhein<br>
+          Jo dil ko chhoo jaaye...
+        </p>
+        <p class="poem-lang">Hindi</p>
+      </div>
+
+      <div class="poem-card">
+        <p class="poem-tag">Poem · English</p>
+        <h3 class="poem-title">Echoes of Aurangabad</h3>
+        <p class="poem-excerpt">
+          Write your English poem's<br>
+          opening lines here...
+        </p>
+        <p class="poem-lang">English</p>
+      </div>
+
+      <div class="poem-card" style="border: 1.5px dashed var(--border); background: transparent; display:flex; align-items:center; justify-content:center; min-height:180px;">
+        <div style="text-align:center; color: var(--border);">
+          <div style="font-size:2rem; margin-bottom:0.5rem;">＋</div>
+          <p style="font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;">Aur Shayari Aayegi</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Rabta</p>
+    <h2 class="section-title">Mujhse Miliye</h2>
+    <div class="section-rule" style="background: var(--gold-light);"></div>
+    <p style="color: rgba(255,255,255,0.55); max-width:500px; font-size:0.95rem; line-height:1.9; margin-bottom:1.5rem;">
+      Shayari sunni pasand hai? Feedback dena chahte hain? Yahan se baat karte hain —
+    </p>
+    <div class="social-grid">
+
+      <!-- Facebook -->
+      <a href="https://facebook.com/MustaqeemKhanAurangabadi" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        Facebook
+      </a>
+
+      <!-- X / Twitter -->
+      <a href="https://x.com/MustaqeemKhanAurangabadi" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X (Twitter)
+      </a>
+
+      <!-- YouTube -->
+      <a href="https://youtube.com/@Mustaqeem_khan03" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="var(--ink)"/></svg>
+        YouTube
+      </a>
+
+    </div>
+
+    <p class="contact-note">© 2026 Mustaqeem Aurangabadi · Tamam Huqooq Mahfooz Hain</p>
+  </div>
+</section>
+
+<footer>
+  Mustaqeem Aurangabadi &mdash; Shayar, Aurangabad &nbsp;·&nbsp; 2026
+</footer>
+
+</body>
+</html>
